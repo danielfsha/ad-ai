@@ -22,7 +22,7 @@ export default function CommandWindow({
           ></div>
 
           {/* box */}
-          <div className="bg-white rounded-lg shadow w-screen max-w-[500px] z-50 overflow-hidden">
+          <div className="bg-[#242323] rounded-lg shadow w-screen max-w-[500px] z-50 overflow-hidden">
             <div className="flex items-center justify-between space-x-1 p-2">
               <Input
                 autoFocus
@@ -49,10 +49,8 @@ export default function CommandWindow({
               {filteredItems.map((option, index) => (
                 <Button
                   key={index}
-                  className="w-full justify-start space-x-3 rounded-none"
-                  variant={
-                    selectedoptions.includes(option) ? "ghost" : "outline"
-                  }
+                  className="w-full justify-start space-x-3 rounded-none bg-[#333232] border-gray-800 text-white"
+                  variant={selectedoptions.includes(option) && "outline"}
                   onClick={() =>
                     setSelectedoptions((prev) =>
                       selectedoptions.includes(option)
@@ -62,7 +60,7 @@ export default function CommandWindow({
                   }
                 >
                   {selectedoptions.includes(option) && (
-                    <IoIosCheckbox className="text-green-800" />
+                    <IoIosCheckbox className="text-[#FF5733]" />
                   )}
                   <span className="mr-2">{option.logo}</span>
                   {option.label}

@@ -11,7 +11,7 @@ import CommandWindow from "@/components/CommandWindow";
 import { NICHES } from "@/utils/constants";
 import useFilterSearch from "@/hooks/useFilterSearch";
 
-import { HiMiniXMark } from "react-icons/hi2";
+import SelectedNiches from "@/components/SelectedNiches";
 
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
   const [niches, setNiches] = useState(NICHES)
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
-  const [selectedNiche, setSelectedNiche] = useState([])
+  const [selectedNiches, setSelectedNiches] = useState([])
   const [filteredItems, setFilteredItems] = useState([])
   const [searchInput, setSearchInput] = useState('')
   const [file, setFile] = useState(null)
@@ -33,32 +33,22 @@ export default function Home() {
   }, [searchInput]);
 
   return (
-    <div className="flex-1 flex items-center justify-center">
-      <div className="h-full flex-[4] flex items-center justify-center">
+    <div className="flex-1 flex items-center justify-center flex-col lg:flex-row">
+      <div className="h-full flex-[4] flex items-center justify-center p-4">
         <ImageInput file={file} setFile={setFile} />
       </div>
 
 
       <div className="h-full flex-[2] border-l border-gray-800 p-4 space-y-2">
-        <CommandWindow searchInput={searchInput} setSearchInput={setSearchInput} isOpen={isOpen} toggle={() => setIsOpen(!isOpen)} options={niches} filteredItems={filteredItems} selectedoptions={selectedNiche} setSelectedoptions={setSelectedNiche} />
-        <div className="flex flex-col">
-          <Button variant='outline' className='w-full justify-start bg-[#242323] border-gray-800 text-white' onClick={() => setIsOpen(true)} >selecte niches</Button>
-          <div className="flex flex-wrap gap-1 mt-2">
-            {
-              selectedNiche && selectedNiche.map((niche, index) => (
-                <Button key={index} variant='outline' onClick={() => {
-                  setSelectedNiche(selectedNiche.filter((item) => item !== niche))
-                }} className='inline-flex'>
-                  {niche.logo}
-                  {niche.label}
-                  <HiMiniXMark />
-                </Button>
-              ))
-            }
-          </div>
-        </div>
+        <CommandWindow searchInput={searchInput} setSearchInput={setSearchInput} isOpen={isOpen} toggle={() => setIsOpen(!isOpen)} options={niches} filteredItems={filteredItems} selectedoptions={selectedNiches} setSelectedoptions={setSelectedNiches} />
+        <Button variant='outline' className='w-full justify-start bg-[#242323] border-gray-800 text-white -mb-2' onClick={() => setIsOpen(true)} >selecte niches</Button>
+        {
+          selectedNiches && (
+            <SelectedNiches selectedNiches={selectedNiches} setSelectedNiches={setSelectedNiches} />
+          )
+        }
         <Input className='w-full' value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter the name of your brand" />
-        <TextArea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Describe your brand here" />
+        <TextArea rows={4} value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Describe your brand here" />
         <Button className='w-full'>Create</Button>
       </div>
     </div>

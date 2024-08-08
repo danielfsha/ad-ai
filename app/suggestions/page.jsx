@@ -37,7 +37,7 @@ export default function SuggestionsPage({ params }) {
       <div className="fixed bottom-2 max-w-screen-md w-full left-[50%] -translate-x-[50%] flex items-center justify-center p-2">
         <form
           onSubmit={handleSubmit}
-          className="flex gap-2 w-full border p-2 rounded-lg"
+          className="flex gap-2 w-full border border-gray-800 p-2 rounded-lg"
         >
           <Input
             className="flex-1 py-2"
