@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority";
 import cn from "@/utils/lib";
 
 export const buttonVariants = cva(
-  "bg-black text-white h-11 px-4 py-2.5 rounded-lg shadow justify-center items-center gap-3 inline-flex",
+  "bg-[#FF5733] text-white h-11 px-4 py-2.5 rounded-lg shadow justify-center items-center gap-3 inline-flex",
   {
     variants: {
       variant: {

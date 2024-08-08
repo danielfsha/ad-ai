@@ -10,7 +10,7 @@ export default function ImageInput({ file, setFile }) {
   return (
     <div
       {...getRootProps()}
-      className="h-[500px] w-[500px] bg-[#f8f9fb] border border-[#cfd4dc] rounded-lg object-cover flex items-center justify-center"
+      className="h-[500px] w-[500px] bg-[#242323] border border-gray-800 rounded-lg object-cover flex items-center justify-center"
     >
       <input {...getInputProps()} />
       {isDragActive ? (

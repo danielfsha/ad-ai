@@ -37,14 +37,16 @@ export default function Home() {
       <div className="h-full flex-[4] flex items-center justify-center">
         <ImageInput file={file} setFile={setFile} />
       </div>
-      <div className="h-full flex-[2] border-l p-4 space-y-2">
+
+
+      <div className="h-full flex-[2] border-l border-gray-800 p-4 space-y-2">
         <CommandWindow searchInput={searchInput} setSearchInput={setSearchInput} isOpen={isOpen} toggle={() => setIsOpen(!isOpen)} options={niches} filteredItems={filteredItems} selectedoptions={selectedNiche} setSelectedoptions={setSelectedNiche} />
         <div className="flex flex-col">
-          <Button variant='outline' className='w-full justify-start' onClick={() => setIsOpen(true)} >selecte niches</Button>
+          <Button variant='outline' className='w-full justify-start bg-[#242323] border-gray-800 text-white' onClick={() => setIsOpen(true)} >selecte niches</Button>
           <div className="flex flex-wrap gap-1 mt-2">
             {
               selectedNiche && selectedNiche.map((niche, index) => (
-                <Button variant='outline' onClick={() => {
+                <Button key={index} variant='outline' onClick={() => {
                   setSelectedNiche(selectedNiche.filter((item) => item !== niche))
                 }} className='inline-flex'>
                   {niche.logo}
