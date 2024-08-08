@@ -1,8 +1,13 @@
 import cn from "@/utils/lib";
 
-export function Tabs({ children }) {
+export function Tabs({ className, children }) {
   return (
-    <div className="rounded-lg shadow border border-[#cfd4dc] justify-start items-start inline-flex overflow-hidden">
+    <div
+      className={cn(
+        "rounded-lg shadow border border-[#cfd4dc] justify-start items-start inline-flex overflow-hidden",
+        className,
+      )}
+    >
       {children}
     </div>
   );
