@@ -15,7 +15,7 @@ export default function CommandWindow({
   return (
     <>
       {isOpen && (
-        <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center overflow-hidden">
+        <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center overflow-hidden z-[20000]">
           <div
             onClick={toggle}
             className="absolute w-screen h-screen top-0 left-0 flex flex-col bg-black bg-opacity-50"
