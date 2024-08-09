@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { IoIosCloudDownload } from "react-icons/io";
@@ -17,7 +19,7 @@ export default function ImageInput({ file, setFile }) {
       {isDragActive ? (
         <div>drop your image here</div>
       ) : (
-        <div class="flex flex-col items-center justify-center pt-5 pb-6 text-gray-500">
+        <div className="flex flex-col items-center justify-center pt-5 pb-6 text-gray-500">
           <IoIosCloudDownload
             size={32}
             className="mb-4 text-gray-500 dark:text-gray-400"
