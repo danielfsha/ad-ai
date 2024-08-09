@@ -20,6 +20,39 @@ export default function SuggestionsPage({ params }) {
 
     | a | b |
     | - | - |
+
+    > A block quote with ~strikethrough~ and a URL: https://reactjs.org.
+
+    * Lists
+    * [ ] todo
+    * [x] done
+
+    A table:
+
+    | a | b |
+    | - | - |
+
+    > A block quote with ~strikethrough~ and a URL: https://reactjs.org.
+
+    * Lists
+    * [ ] todo
+    * [x] done
+
+    A table:
+
+    | a | b |
+    | - | - |
+
+    > A block quote with ~strikethrough~ and a URL: https://reactjs.org.
+
+    * Lists
+    * [ ] todo
+    * [x] done
+
+    A table:
+
+    | a | b |
+    | - | - |
     `;
 
   function handleSubmit(e) {
@@ -30,7 +63,7 @@ export default function SuggestionsPage({ params }) {
 
   return (
     <div className="flex items-center">
-      <div className="h-full flex-[3]">
+      <div className="h-full flex-[3] pb-20">
         <MarkdownRenderer markdown={markdown} />
       </div>
 

@@ -12,7 +12,7 @@ export default function Nav() {
 
   const router = useRouter();
   return (
-    <nav className="w-full flex items-center justify-between py-4 border-b border-gray-800">
+    <nav className="w-full bg-[#0b0c09] backdrop-blur-sm sticky top-0 flex items-center justify-between py-4 border-b border-gray-800">
       <Container className="justify-between space-y-2 lg:space-y-0">
         <div className="flex items-center justify-between space-x-4 ">
           <h1 className="text-4xl font-semibold text-white">Ad AI</h1>
