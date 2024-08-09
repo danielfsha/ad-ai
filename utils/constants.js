@@ -13,6 +13,26 @@ export const navLinks = [
     },
 ]
 
+export const features = [
+    {
+        title: 'Other AI Tools',
+        list: [
+            'AI Image generator',
+            'AI Text generator',
+        ]
+    },
+    {
+        title: 'Ad ai',
+        list: [
+            'AI Image generator',
+            'AI Text generator',
+            'AI Video generator',
+            'AI Quote generator',
+            'AI Story generator',
+        ]
+    }
+]
+
 export const faq = [
     {
         question: 'What is Ad AI?',

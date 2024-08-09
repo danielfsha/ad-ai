@@ -13,6 +13,7 @@ import useFilterSearch from "@/hooks/useFilterSearch";
 
 import SelectedNiches from "@/components/SelectedNiches";
 import cn from "@/utils/lib";
+import NavLayout from "@/components/NavLayout";
 
 export default function CreatePage() {
   const { filterItems } = useFilterSearch();
@@ -33,51 +34,53 @@ export default function CreatePage() {
   }, [searchInput]);
 
   return (
-    <div className="flex-1 flex items-center justify-center flex-col lg:flex-row">
-      <div className="h-full w-[100%] flex items-center justify-center p-4 lg:w-[66%]">
-        <ImageInput file={file} setFile={setFile} />
-      </div>
-
-      <div className="h-full w-[100%]  p-4 space-y-2 lg:border-l lg:border-gray-800 lg:w-[33%]">
-        <CommandWindow
-          searchInput={searchInput}
-          setSearchInput={setSearchInput}
-          isOpen={isOpen}
-          toggle={() => setIsOpen(!isOpen)}
-          options={niches}
-          filteredItems={filteredItems}
-          selectedoptions={selectedNiches}
-          setSelectedoptions={setSelectedNiches}
-        />
-        <div
-          className={cn(
-            buttonVariants({ variant: "outline" }),
-            "w-full justify-start bg-[#242323] border-gray-800 text-white -mb-2",
-          )}
-          onClick={() => setIsOpen(true)}
-        >
-          selecte niches
+    <NavLayout>
+      <div className="flex-1 flex items-center justify-center flex-col lg:flex-row">
+        <div className="h-full w-[100%] flex items-center justify-center p-4 lg:w-[66%]">
+          <ImageInput file={file} setFile={setFile} />
         </div>
-        {selectedNiches && (
+
+        <div className="h-full w-[100%] p-4 space-y-2 lg:border-l lg:border-gray-800 lg:w-[33%]">
+          {isOpen && (
+            <CommandWindow
+              searchInput={searchInput}
+              setSearchInput={setSearchInput}
+              isOpen={isOpen}
+              toggle={() => setIsOpen(!isOpen)}
+              options={niches}
+              filteredItems={filteredItems}
+              selectedoptions={selectedNiches}
+              setSelectedoptions={setSelectedNiches}
+            />
+          )}
+          <div
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "w-full justify-start bg-[#242323] border-gray-800 text-white",
+            )}
+            onClick={() => setIsOpen(true)}
+          >
+            selecte niches
+          </div>
           <SelectedNiches
             selectedNiches={selectedNiches}
             setSelectedNiches={setSelectedNiches}
           />
-        )}
-        <Input
-          className="w-full"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Enter the name of your brand"
-        />
-        <TextArea
-          rows={4}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="Describe your brand here"
-        />
-        <Button className="w-full">Create</Button>
+          <Input
+            className="w-full"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter the name of your brand"
+          />
+          <TextArea
+            rows={4}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Describe your brand here"
+          />
+          <Button className="w-full">Create</Button>
+        </div>
       </div>
-    </div>
+    </NavLayout>
   );
 }
