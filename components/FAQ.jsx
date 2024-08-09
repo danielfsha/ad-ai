@@ -10,7 +10,7 @@ export default function FAQ() {
   const [questions, setQuestions] = useState(faq);
 
   return (
-    <Container size={"md"} className="py-6">
+    <Container size={"md"} className="py-6 z-0">
       <div className=" text-center pb-16">
         <p className="text-4xl font-semibold tracking-tighter ">FAQs</p>
         <p className="mt-2 text-base text-gray-300 font-medium opacity-80">
