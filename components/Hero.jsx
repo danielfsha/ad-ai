@@ -12,8 +12,8 @@ export default function Hero() {
         </span>
       </p>
       <p class="max-w-sm mt-4 text-base text-gray-300">
-        Available for Chrome and Chromium-based browsers (like Edge, Brave and
-        Arc). superscan requires an active license.
+        Just choose your niche, name and upload brand assets. Its as easy as
+        clicking few buttons
       </p>
       <div className="flex items-center justify-center space-x-2 mt-6">
         <Link href="/create">
