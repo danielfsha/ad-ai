@@ -34,7 +34,6 @@ export default function Nav() {
           ))}
         </Tabs>
       </Container>
-      ;
     </nav>
   );
 }
