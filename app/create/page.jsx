@@ -5,16 +5,17 @@ import { useEffect, useState } from "react";
 import ImageInput from "@/components/ImageInput";
 import Input from "@/components/Input";
 import TextArea from "@/components/TextArea";
-import Button from "@/components/Button";
+import Button, { buttonVariants } from "@/components/Button";
 import CommandWindow from "@/components/CommandWindow";
 
 import { NICHES } from "@/utils/constants";
 import useFilterSearch from "@/hooks/useFilterSearch";
 
 import SelectedNiches from "@/components/SelectedNiches";
+import cn from "@/utils/lib";
 
 
-export default function Home() {
+export default function CreatePage() {
   const { filterItems } = useFilterSearch();
 
   const [isOpen, setIsOpen] = useState(false)
@@ -39,9 +40,9 @@ export default function Home() {
       </div>
 
 
-      <div className="h-full flex-[2] border-l border-gray-800 p-4 space-y-2">
+      <div className="h-full flex-[2]  p-4 space-y-2 lg:border-l lg:border-gray-800">
         <CommandWindow searchInput={searchInput} setSearchInput={setSearchInput} isOpen={isOpen} toggle={() => setIsOpen(!isOpen)} options={niches} filteredItems={filteredItems} selectedoptions={selectedNiches} setSelectedoptions={setSelectedNiches} />
-        <Button variant='outline' className='w-full justify-start bg-[#242323] border-gray-800 text-white -mb-2' onClick={() => setIsOpen(true)} >selecte niches</Button>
+        <div className={cn(buttonVariants({ variant: "outline" }), "w-full justify-start bg-[#242323] border-gray-800 text-white -mb-2")} onClick={() => setIsOpen(true)} >selecte niches</div>
         {
           selectedNiches && (
             <SelectedNiches selectedNiches={selectedNiches} setSelectedNiches={setSelectedNiches} />

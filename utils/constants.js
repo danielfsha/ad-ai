@@ -1,3 +1,18 @@
+export const navLinks = [
+    {
+        label: 'Home',
+        href: '/'
+    },
+    {
+        label: 'Create',
+        href: '/create'
+    },
+    {
+        label: 'Suggestions',
+        href: '/suggestions'
+    },
+]
+
 export const NICHES = [
     {
         label: 'Design',

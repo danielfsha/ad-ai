@@ -7,13 +7,17 @@ import { IoIosCloudDownload } from "react-icons/io";
 export default function ImageInput({ file, setFile }) {
   const onDrop = useCallback((acceptedFiles) => {
     setFile(acceptedFiles[0]);
+    console.log(acceptedFiles);
   }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: { "image/*": [".png", ".jpg", ".jpeg", ".gif"] },
+  });
 
   return (
     <div
       {...getRootProps()}
-      className="h-[500px] w-[500px] bg-[#242323] border border-gray-800 rounded-lg object-cover flex items-center justify-center"
+      className="h-[400px] w-[400px] bg-[#242323] border border-gray-800 rounded-lg object-cover flex items-center justify-center"
     >
       <input {...getInputProps()} />
       {isDragActive ? (

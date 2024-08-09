@@ -15,7 +15,7 @@ export default function SelectedNiches({ selectedNiches, setSelectedNiches }) {
         >
           {niche.logo}
           {niche.label}
-          <HiMiniXMark />
+          <HiMiniXMark size={24} />
         </Button>
       ))}
     </div>
