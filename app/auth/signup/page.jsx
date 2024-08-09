@@ -67,7 +67,7 @@ export default function SignupPage() {
 
         <div className="flex items-center justify-center mt-4">
           <p className="text-sm text-gray-300 font-medium opacity-80">
-            Already have an account?{" "}
+            {"Already have an account? "}
             <Link href="/auth/login" className="text-[#FF5733] underline">
               login
             </Link>

@@ -53,7 +53,7 @@ export default function LoginPage() {
 
         <div className="flex items-center justify-center mt-4">
           <p className="text-sm text-gray-300 font-medium opacity-80">
-            Don't have an account?{" "}
+            {"Don't have an account? "}
             <Link href="/auth/signup" className="text-[#FF5733] underline">
               Sign up
             </Link>
