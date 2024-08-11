@@ -39,7 +39,7 @@ export default function LoginPage() {
       },
     });
 
-    if (res.status === "okay") {
+    if (status === "okay") {
       router.push("/create");
     }
   }

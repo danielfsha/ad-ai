@@ -42,11 +42,12 @@ const AuthProvider = ({ children }) => {
       );
       const data = await response.json();
 
+      if (data.status === "failed") {
+        setError(data.message);
+        return;
+      }
+
       setUser(data);
-      console.log("user", data);
-      return {
-        status: 200,
-      };
     } catch (err) {
       setError(err.status);
     }
@@ -74,9 +75,6 @@ const AuthProvider = ({ children }) => {
 
       setUser({ email, password });
       console.log("user", data);
-      return {
-        status: 200,
-      };
     } catch (err) {
       setError(err.status);
     }
