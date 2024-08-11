@@ -55,6 +55,9 @@ const AuthProvider = ({ children }) => {
       };
     } catch (err) {
       setError(err.status);
+      return {
+        status: "failed",
+      };
     }
   };
 
@@ -89,6 +92,9 @@ const AuthProvider = ({ children }) => {
       console.log("user", data);
     } catch (err) {
       setError(err.status);
+      return {
+        status: "failed",
+      };
     }
   };
 

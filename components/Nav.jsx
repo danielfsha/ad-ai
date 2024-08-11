@@ -18,7 +18,9 @@ export default function Nav() {
     <nav className="w-full bg-[#0b0c09] backdrop-blur-sm sticky top-0 flex items-center justify-between py-4 border-b border-gray-800 z-[1000]">
       <Container className="justify-between space-y-2 lg:space-y-0">
         <div className="flex items-center justify-between space-x-4 ">
-          <h1 className="text-4xl font-semibold text-white">Ad AI</h1>
+          <Link href="/" className="text-4xl font-semibold text-white">
+            Ad AI
+          </Link>
 
           <Button onClick={user ? logout : login} size="lg">
             {user ? "Logout" : "Login"}

@@ -28,7 +28,6 @@ export default function CreatePage() {
     }
 
     handleInputChange("status", "loading");
-    console.log("state", state.status);
 
     try {
       const formData = new FormData();
@@ -57,9 +56,9 @@ export default function CreatePage() {
     }
   };
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+  // useEffect(() => {
+  //   console.log(state);
+  // }, [state]);
 
   return (
     <NavLayout>
