@@ -10,7 +10,7 @@ export default function FAQ() {
   const [questions, setQuestions] = useState(faq);
 
   return (
-    <Container size={"md"} className="py-16 z-0">
+    <Container size={"md"} className="py-16 z-0" id='#faq'>
       <div className=" text-center py-16">
         <p className="text-4xl font-semibold tracking-tighter ">FAQs</p>
         <p className="mt-2 text-base text-gray-300 font-medium opacity-80">
@@ -37,7 +37,7 @@ export default function FAQ() {
               {item.question}
               <button
                 className={`w-8 h-8 flex items-center justify-center transition-all ${
-                  item.isOpen && "rotate-45"
+                  item.isOpen && "rotate-[135deg]"
                 }`}
               >
                 <GoPlus size={28} />

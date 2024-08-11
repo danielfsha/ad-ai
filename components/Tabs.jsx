@@ -2,7 +2,7 @@ import cn from "@/utils/lib";
 import { cva } from "class-variance-authority";
 
 export const tabItemVariants = cva(
-  "flex-1 px-4 py-2.5 bg-[#242323] justify-center items-start inline-flex",
+  "flex-1 px-4 py-2.5 bg-[#242323] justify-center items-start inline-flex cursor-pointer",
   {
     variants: {
       variant: {

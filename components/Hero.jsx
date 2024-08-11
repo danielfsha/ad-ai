@@ -19,7 +19,9 @@ export default function Hero() {
         <Link href="/create">
           <Button>Get Started</Button>
         </Link>
-        <Button variant="outline">Learn More</Button>
+        <Link href='#faq'>
+          <Button variant="outline">Learn More</Button>
+        </Link>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ export function Card({ className, children, ...props }) {
     <div
       className={cn(
         "bg-[#242323] min-h-[50vh] rounded-lg text-card-foreground shadow-sm",
-        className,
+        className
       )}
     >
       {children}
@@ -26,7 +26,7 @@ export function CardTitle({ className, children, ...props }) {
     <h3
       className={cn(
         "text-3xl font-semibold leading-none tracking-tight",
-        className,
+        className
       )}
     >
       {children}

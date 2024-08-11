@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+import { useRouter } from "next/navigation";
+
 import ImageInput from "@/components/ImageInput";
 import Input from "@/components/Input";
 import TextArea from "@/components/TextArea";
@@ -16,8 +18,10 @@ import cn from "@/utils/lib";
 import NavLayout from "@/components/NavLayout";
 
 export default function CreatePage() {
+  const router = useRouter();
   const { filterItems } = useFilterSearch();
 
+  const [user, setUser] = useState(null); 
   const [isOpen, setIsOpen] = useState(false);
   const [niches, setNiches] = useState(NICHES);
   const [name, setName] = useState("");
@@ -33,7 +37,12 @@ export default function CreatePage() {
     console.log(filtered);
   }, [searchInput]);
 
-  return (
+  if (!user) {
+    router.push("/auth/login");
+  }
+
+  if (user) {
+    return (
     <NavLayout>
       <div className="flex-1 flex items-center justify-center flex-col lg:flex-row">
         <div className="h-full w-[100%] flex items-center justify-center p-4 lg:w-[66%]">
@@ -83,4 +92,5 @@ export default function CreatePage() {
       </div>
     </NavLayout>
   );
+}
 }
