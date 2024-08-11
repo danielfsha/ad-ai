@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+import { useAuth } from "@/context/authContext";
 
 import Container from "@/components/Container";
 import Input from "@/components/Input";
@@ -12,6 +15,9 @@ import usePasswordStrength from "@/hooks/usePasswordStrength";
 import PasswordChecker from "@/components/PasswordChecker";
 
 export default function SignupPage() {
+  const router = useRouter();
+  const { signup } = useAuth();
+
   const [
     password,
     setPassword,
@@ -45,27 +51,15 @@ export default function SignupPage() {
       return;
     }
 
-    try {
-      const res = await fetch(
-        `http://7d97-102-213-69-138.ngrok-free.app/register`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
-        }
-      );
-      const data = await res.json();
+    const res = await signup({
+      userData: {
+        email,
+        password,
+      },
+    });
 
-      if (res.status === 200) {
-        router.push("/login");
-      }
-    } catch (err) {
-      setError(err.message);
+    if (res.status === 200) {
+      router.push("/auth/login");
     }
   }
 

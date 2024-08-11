@@ -3,21 +3,26 @@
 import { useEffect, useState } from "react";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+import { useAuth } from "@/context/authContext";
 
 import Container from "@/components/Container";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/Alert";
 
-
 export default function LoginPage() {
+  const { login } = useAuth();
+
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setError('');
+      setError("");
     }, 2000); // 2000 milliseconds
 
     return () => clearTimeout(timer); // Cleanup the timer on unmount
@@ -30,34 +35,17 @@ export default function LoginPage() {
       return;
     }
 
-    e.preventDefault();
+    const res = await login({
+      userData: {
+        email,
+        password,
+      },
+    });
 
-    if (!email || !password) {
-      setError("Passwords do not match");
-      return;
-    }
-
-    try {
-      const res = await fetch(`https://7d97-102-213-69-138.ngrok-free.app/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email,
-          password
-        })
-      });
-      const data = await res.json();
-
-      if (res.status === 200) {
-        router.push("/create");
-      }
-    } catch (err) {
-      setError(err.message);
+    if (res.status === 200) {
+      router.push("/dashboard");
     }
   }
-
 
   return (
     <Container size={"sm"} className="items-center justify-center space-y-4">
@@ -68,13 +56,12 @@ export default function LoginPage() {
         </p>
       </div>
 
-      
-      {
-        error && <Alert variant="destructive">
+      {error && (
+        <Alert variant="destructive">
           <AlertTitle>Error</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
-      }
+      )}
 
       <form
         onSubmit={handleSubmit}
