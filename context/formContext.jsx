@@ -2,8 +2,6 @@
 
 import { createContext, useContext, useState } from "react";
 
-import { NICHES } from "@/utils/constants";
-
 const FormContext = createContext();
 
 export const useForm = () => {
@@ -13,7 +11,6 @@ export const useForm = () => {
 const FormProvider = ({ children }) => {
   const [state, setState] = useState({
     isOpen: false,
-    niches: NICHES,
     name: "",
     description: "",
     selectedNiches: [],

@@ -1,13 +1,18 @@
 "use client";
 
 import React, { useCallback } from "react";
+
+import { useForm } from "@/context/formContext";
+
 import { useDropzone } from "react-dropzone";
 import { IoIosCloudDownload } from "react-icons/io";
 
-export default function ImageInput({ file, setFile }) {
+export default function ImageInput({ file, onChange }) {
+  const { state, handleInputChange } = useForm();
+
   const onDrop = useCallback((acceptedFiles) => {
-    setFile(acceptedFiles[0]);
     console.log(acceptedFiles);
+    handleInputChange("file", acceptedFiles[0]);
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
