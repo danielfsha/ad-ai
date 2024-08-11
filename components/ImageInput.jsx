@@ -10,9 +10,10 @@ import { IoIosCloudDownload } from "react-icons/io";
 export default function ImageInput({ file, onChange }) {
   const { state, handleInputChange } = useForm();
 
-  const onDrop = useCallback((acceptedFiles) => {
-    console.log(acceptedFiles);
-    handleInputChange("file", acceptedFiles[0]);
+  const onDrop = useCallback(async (acceptedFiles) => {
+    const image = acceptedFiles[0];
+
+    handleInputChange("file", image);
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,

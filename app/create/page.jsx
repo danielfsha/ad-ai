@@ -9,8 +9,7 @@ import { useForm } from "@/context/formContext";
 import ImageInput from "@/components/ImageInput";
 import Input from "@/components/Input";
 import TextArea from "@/components/TextArea";
-import Button, { buttonVariants } from "@/components/Button";
-import CommandWindow from "@/components/CommandWindow";
+import Button from "@/components/Button";
 import { useEffect } from "react";
 
 export default function CreatePage() {
