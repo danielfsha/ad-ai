@@ -19,12 +19,6 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  useEffect(() => {
-    if (user && user.uid) {
-      router.push("/create");
-    }
-  }, [user]);
-
   async function handleSubmit(e) {
     e.preventDefault();
     if (!email || !password) {
@@ -39,7 +33,7 @@ export default function LoginPage() {
       },
     });
 
-    if (res.status || res.status === "okay") {
+    if (res.status === "okay") {
       router.push("/create");
     }
   }
