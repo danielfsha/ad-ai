@@ -13,20 +13,17 @@ import Button from "@/components/Button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/Alert";
 
 export default function LoginPage() {
-  const { login } = useAuth();
+  const { user, login, error } = useAuth();
 
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setError("");
-    }, 2000); // 2000 milliseconds
-
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
-  }, [error]);
+    if (user) {
+      router.push("/create");
+    }
+  }, [user]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -42,7 +39,7 @@ export default function LoginPage() {
       },
     });
 
-    if (res.status === 200) {
+    if (res.status === "okay") {
       router.push("/create");
     }
   }

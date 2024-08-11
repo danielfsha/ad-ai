@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 // Create Auth Context
 const AuthContext = createContext();
@@ -12,19 +12,43 @@ export const useAuth = () => {
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null); // User state
+  const [error, setError] = useState(null); // Error state
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setError("");
+    }, 2000); // 2000 milliseconds
+
+    return () => clearTimeout(timer); // Cleanup the timer on unmount
+  }, [error]);
 
   const login = async ({ userData }) => {
     const { email, password } = userData;
 
     console.log("Logging in");
     try {
-      setUser({ email, password });
-      console.log("user", user);
+      const response = await fetch(
+        "https://7d97-102-213-69-138.ngrok-free.app/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
+      const data = await response.json();
+
+      setUser(data);
+      console.log("user", data);
       return {
         status: 200,
       };
     } catch (err) {
-      // setError(err.message);
+      setError(err.status);
     }
   };
 
@@ -33,13 +57,28 @@ const AuthProvider = ({ children }) => {
 
     console.log("creating user");
     try {
+      const response = await fetch(
+        "https://7d97-102-213-69-138.ngrok-free.app/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
+      const data = await response.json();
+
       setUser({ email, password });
-      console.log("user", user);
+      console.log("user", data);
       return {
         status: 200,
       };
     } catch (err) {
-      // setError(err.message);
+      setError(err.status);
     }
   };
 
@@ -48,7 +87,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout }}>
+    <AuthContext.Provider value={{ user, login, signup, logout, error }}>
       {children}
     </AuthContext.Provider>
   );

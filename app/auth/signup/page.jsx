@@ -16,7 +16,7 @@ import PasswordChecker from "@/components/PasswordChecker";
 
 export default function SignupPage() {
   const router = useRouter();
-  const { signup } = useAuth();
+  const { signup, error } = useAuth();
 
   const [
     password,
@@ -28,15 +28,6 @@ export default function SignupPage() {
   ] = usePasswordStrength();
   const [email, setEmail] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setError("");
-    }, 2000); // 2000 milliseconds
-
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
-  }, [error]);
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
@@ -58,7 +49,7 @@ export default function SignupPage() {
       },
     });
 
-    if (res.status === 200) {
+    if (res.status === "status") {
       router.push("/auth/login");
     }
   }
