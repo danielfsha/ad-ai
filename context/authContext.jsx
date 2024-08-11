@@ -44,20 +44,32 @@ const AuthProvider = ({ children }) => {
 
       if (data.status === "failed") {
         setError(data.message);
-        return;
+        return {
+          status: "failed",
+        };
       }
 
       setUser(data);
+      return {
+        status: "okay",
+      };
     } catch (err) {
       setError(err.status);
     }
   };
 
   const signup = async ({ userData }) => {
-    const { email, password } = userData;
+    const { email, password, confirmPassword } = userData;
 
     console.log("creating user");
     try {
+      if (password !== confirmPassword) {
+        setError("Passwords do not match");
+        return {
+          status: "failed",
+        };
+      }
+
       const response = await fetch(
         "https://7d97-102-213-69-138.ngrok-free.app/register",
         {

@@ -20,7 +20,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    if (user) {
+    if (user && user.uid) {
       router.push("/create");
     }
   }, [user]);
@@ -39,7 +39,7 @@ export default function LoginPage() {
       },
     });
 
-    if (status === "okay") {
+    if (res.status || res.status === "okay") {
       router.push("/create");
     }
   }

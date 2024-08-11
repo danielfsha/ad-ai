@@ -37,19 +37,15 @@ export default function SignupPage() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-
     const res = await signup({
       userData: {
         email,
         password,
+        confirmPassword,
       },
     });
 
-    if (res.status === "status") {
+    if (res.status || res.status === "status") {
       router.push("/auth/login");
     }
   }
