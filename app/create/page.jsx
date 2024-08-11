@@ -14,8 +14,13 @@ import CommandWindow from "@/components/CommandWindow";
 import { useEffect } from "react";
 
 export default function CreatePage() {
+  const router = useRouter();
   const { user } = useAuth();
   const { state, handleInputChange } = useForm();
+
+  if (!user) {
+    router.push("/auth/login");
+  }
 
   useEffect(() => {
     console.log(state);

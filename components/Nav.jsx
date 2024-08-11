@@ -1,5 +1,7 @@
 "use client";
 
+import { useAuth } from "@/context/authContext";
+
 import { usePathname, useRouter } from "next/navigation";
 import Button from "./Button";
 import Container from "./Container";
@@ -8,6 +10,7 @@ import Link from "next/link";
 import { navLinks } from "@/utils/constants";
 
 export default function Nav() {
+  const { user, login, logout } = useAuth();
   const pathname = usePathname();
 
   const router = useRouter();
@@ -17,9 +20,9 @@ export default function Nav() {
         <div className="flex items-center justify-between space-x-4 ">
           <h1 className="text-4xl font-semibold text-white">Ad AI</h1>
 
-          <Link href="/create">
-            <Button size="lg">Get started</Button>
-          </Link>
+          <Button onClick={user ? logout : login} size="lg">
+            {user ? "Logout" : "Login"}
+          </Button>
         </div>
 
         <Tabs className="w-full lg:max-w-[450px] lg:absolute lg:top-[50%] lg:left-[50%] lg:-translate-x-[50%] lg:-translate-y-[50%]">
