@@ -17,6 +17,8 @@ const FormProvider = ({ children }) => {
     filteredItems: [],
     searchInput: "",
     file: null,
+    status: null,
+    error: null,
   });
 
   const handleInputChange = (field, value) => {

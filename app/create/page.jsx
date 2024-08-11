@@ -21,6 +21,42 @@ export default function CreatePage() {
     router.push("/auth/login");
   }
 
+  const handleSubmit = async () => {
+    if (!state.file) {
+      handleInputChange("error", "Please select an image");
+      return;
+    }
+
+    handleInputChange("status", "loading");
+    console.log("state", state.status);
+
+    try {
+      const formData = new FormData();
+      formData.append("form name", state.name);
+      formData.append("description", state.description);
+      formData.append("image", state.file);
+
+      const response = await fetch(
+        "https://7d97-102-213-69-138.ngrok-free.app/create",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      const data = await response.json();
+
+      console.log("data", data);
+
+      if (data.status === "failed") {
+        handleInputChange("error", data.message);
+      }
+
+      handleInputChange("status", "success");
+    } catch (err) {
+      handleInputChange("error", err.error);
+    }
+  };
+
   useEffect(() => {
     console.log(state);
   }, [state]);
@@ -45,7 +81,9 @@ export default function CreatePage() {
             onChange={(e) => handleInputChange("description", e.target.value)}
             placeholder="Describe your brand here"
           />
-          <Button className="w-full">Create</Button>
+          <Button onClick={handleSubmit} className="w-full">
+            Create
+          </Button>
         </div>
       </div>
     </NavLayout>
